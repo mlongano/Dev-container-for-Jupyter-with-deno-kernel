@@ -11,12 +11,12 @@
     }
   },
   "mounts": [
-    "source=${localWorkspaceFolder}/.devcontainer/bash/.bashrc,target=/home/jovyan/.bashrc,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.devcontainer/bash/.bash_history,target=/home/jovyan/.bash_history,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.devcontainer/bash/.bash_aliases,target=/home/jovyan/.bash_aliases,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.devcontainer/bash/.bash_eternal_history,target=/home/jovyan/.bash_eternal_history,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.devcontainer/bash/.bashrc.d,target=/home/jovyan/.bashrc.d,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/.devcontainer/.gitconfig,target=/home/jovyan/.gitconfig,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.devcontainer/bash/.bashrc,target=/root/.bashrc,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/bash/.bash_history,target=/root/.bash_history,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/bash/.bash_aliases,target=/root/.bash_aliases,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/bash/.bash_eternal_history,target=/root/.bash_eternal_history,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/bash/.bashrc.d,target=/root/.bashrc.d,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/.devcontainer/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
   ],
   // Add the IDs of extensions you want installed when the container is created.
   "customizations": {

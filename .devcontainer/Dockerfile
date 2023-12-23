@@ -6,6 +6,12 @@ ARG NOTEBOOKS_DIR=/notebooks
 
 # Set the working directory in the container to /notebooks
 WORKDIR ${NOTEBOOKS_DIR}
+ENV HOME=/root
+USER root
+ENV NB_USER=root \
+  CHOWN_HOME=yes \
+  CHOWN_HOME_OPTS='-R' \
+  JUPYTER_ENABLE_LAB=yes
 
 # Add the local directory (i.e., the contents of your project) to the container
 ADD . ${NOTEBOOKS_DIR}
@@ -15,7 +21,7 @@ ADD .devcontainer/bash/.bash_history ${HOME}/.bash_history
 ADD .devcontainer/bash/.bash_eternal_history ${HOME}/.bash_eternal_history
 ADD .devcontainer/bash/.bash_aliases ${HOME}/.bash_aliases
 ADD .devcontainer/.gitconfig ${HOME}/.gitconfig
-ADD .devcontainer/requirements.txt ${NOTEBOOKS_DIR}/requirements.txt
+ADD requirements.txt ${NOTEBOOKS_DIR}/requirements.txt
 
 # Install some dependency packages, deno.js and Jupyter Lab
 USER root
@@ -51,9 +57,10 @@ RUN  curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # Add Deno to PATH
 
-ENV PATH="/home/jovyan/.deno/bin:${PATH}"
+ENV PATH="/root/.deno/bin:${PATH}"
 
 # Install deno Jupyter kernel
+USER root
 RUN deno jupyter --unstable --install
 
 RUN pip install -r ${NOTEBOOKS_DIR}/requirements.txt
