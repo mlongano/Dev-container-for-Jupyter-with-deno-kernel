@@ -13,8 +13,13 @@ function virtualenv_info(){
         # Strip out the path and just leave the env name
         venv="${VIRTUAL_ENV##*/}"
     else
-        # In case you don't have one activated
-        venv=''
+      if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+          # Strip out the path and just leave the env name
+          venv="${CONDA_DEFAULT_ENV}"
+      else
+          # In case you don't have one activated
+          venv=''
+      fi
     fi
     [[ -n "$venv" ]] && echo -e "($venv) "
 }
@@ -34,12 +39,12 @@ check_errs()
 source $DIR/colors.sh
 
 function parrot_prompt() {
-  if [[ ${EUID} == 0 ]]; then 
+  if [[ ${EUID} == 0 ]]; then
     PROMPT="#";
   else
     PROMPT="$";
   fi
-  export PROMPT 
+  export PROMPT
 if [ "$1" = yes ]; then
     PS1="$RED╭─\$(check_errs \$?)\
 [\$(if [[ ${EUID} == 0 ]]; \

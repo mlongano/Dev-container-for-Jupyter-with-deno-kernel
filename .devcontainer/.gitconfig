@@ -6,4 +6,4 @@
 [credential]
   helper = store
 [safe]
-  directory = /workspaces/JupyterNotebooks
+  directory = /notebooks
